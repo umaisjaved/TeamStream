@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ==========================================
+   RESET
+========================================== */
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ==========================================
+   HTML
+========================================== */
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* ==========================================
+   BODY
+========================================== */
+
+body{
+
+    font-family:var(--font-family);
+
+    background:
+        radial-gradient(circle at top left,#7C4DFF22,transparent 30%),
+        radial-gradient(circle at bottom right,#06B6D422,transparent 30%),
+        var(--gradient-dark);
+
+    color:var(--text-primary);
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+
+}
+
+/* ==========================================
+   APP
+========================================== */
+
+#app{
+
+    min-height:100vh;
+
+}
+
+/* ==========================================
+   LINKS
+========================================== */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+/* ==========================================
+   HEADINGS
+========================================== */
+
+h1{
+
+    font-size:var(--text-3xl);
+
+    font-weight:800;
+
+}
+
+h2{
+
+    font-size:var(--text-2xl);
+
+    font-weight:700;
+
+}
+
+h3{
+
+    font-size:var(--text-xl);
+
+    font-weight:700;
+
+}
+
+p{
+
+    color:var(--text-secondary);
+
+    line-height:1.6;
+
+}
+
+/* ==========================================
+   INPUTS
+========================================== */
+
+input,
+textarea,
+select,
+button{
+
+    font-family:inherit;
+
+}
+
+/* ==========================================
+   SELECTION
+========================================== */
+
+::selection{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+/* ==========================================
+   IMAGES
+========================================== */
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+/* ==========================================
+   ANIMATED BACKGROUND
+========================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(circle,#7C4DFF22 0%,transparent 60%),
+
+        radial-gradient(circle,#06B6D411 0%,transparent 60%);
+
+    filter:blur(120px);
+
+    z-index:-1;
+
+    animation:floatBackground 18s ease-in-out infinite alternate;
+
+}
+
+@keyframes floatBackground{
+
+    from{
+
+        transform:
+            translate(-8%, -5%)
+            scale(1);
+
+    }
+
+    to{
+
+        transform:
+            translate(8%,5%)
+            scale(1.15);
+
+    }
+
+}
