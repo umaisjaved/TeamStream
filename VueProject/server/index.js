@@ -14,7 +14,13 @@ const roomRoutes = require('./routes/rooms');
 connectDB();
 
 const app = express();
-app.use(cors());
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  process.env.CORS_ORIGIN
+].filter(Boolean);
+
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -27,7 +33,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: allowedOrigins,
     methods: ['GET', 'POST']
   }
 });
@@ -37,6 +43,10 @@ io.on('connection', (socket) => {
   handleSocket(socket, io);
 });
 
-server.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
-});
+if (process.env.NODE_ENV !== 'production') {
+  server.listen(3000, () => {
+    console.log('Server running on http://localhost:3000');
+  });
+}
+
+module.exports = server;
